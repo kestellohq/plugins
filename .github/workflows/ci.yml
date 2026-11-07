@@ -27,7 +27,7 @@ jobs:
       matrix:
         php: ['8.4', '8.5'] # the oldest Kestello supports, and the newest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - uses: shivammathur/setup-php@v2
         with:
