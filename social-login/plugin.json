@@ -1,0 +1,17 @@
+{
+  "slug": "social-login",
+  "name": "Social Login",
+  "version": "1.0.0",
+  "description": "Sign in with Google (OpenID Connect) or GitHub (OAuth 2). Reference plugin for external authenticators: no core changes needed.",
+  "requires": {
+    "core": "^0.1",
+    "php": ">=8.4"
+  },
+  "namespace": "Plugins\\SocialLogin\\",
+  "provider": "Plugins\\SocialLogin\\SocialLoginProvider",
+  "permissions": {
+    "network": ["accounts.google.com", "oauth2.googleapis.com", "www.googleapis.com", "openidconnect.googleapis.com", "github.com", "api.github.com"],
+    "auth": ["authenticator"],
+    "users": ["create", "link-identities"]
+  }
+}

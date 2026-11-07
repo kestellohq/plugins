@@ -1,0 +1,44 @@
+# Every check for every plugin, against Kestello's develop branch: the same script people run.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+  workflow_call:
+    inputs:
+      kestello-ref:
+        type: string
+        default: develop
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Checks (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4', '8.5'] # the oldest Kestello supports, and the newest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, intl, sodium, zip, gd, fileinfo, pdo_sqlite
+          coverage: none
+          tools: none
+
+      - name: Get Kestello and the pinned PHP tools
+        env:
+          KESTELLO_REF: ${{ inputs.kestello-ref || 'develop' }}
+        run: sh tools/setup.sh
+
+      - run: sh tools/check.sh

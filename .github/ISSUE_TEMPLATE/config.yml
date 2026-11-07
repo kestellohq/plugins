@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A problem in Kestello itself
+    url: https://github.com/kestellohq/cms/issues/new/choose
+    about: Core, the admin, the API or an extension point a plugin needs.
+  - name: A security problem
+    url: https://github.com/kestellohq/cms/security/policy
+    about: Report it privately, never in a public issue.

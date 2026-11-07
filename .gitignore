@@ -1,0 +1,9 @@
+# The Kestello checkout tests and builds run against (tools/setup.sh)
+/kestello
+/dist/
+.phpstan/
+.php-cs-fixer.cache
+node_modules/
+.DS_Store
+.idea/
+.vscode/

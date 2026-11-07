@@ -1,0 +1,19 @@
+# Static analysis at Kestello's level, against the Kestello checkout in kestello/
+# (sh tools/setup.sh). Run: sh tools/check.sh
+parameters:
+    level: 6
+    phpVersion: 80400
+    tmpDir: .phpstan
+    bootstrapFiles:
+        - kestello/core/bootstrap.php
+    # Kestello's test helpers, which package tests extend
+    scanDirectories:
+        - kestello/tests
+    paths:
+        - meilisearch
+        - typesense
+        - social-login
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # Providers and endpoints override a nullable contract method and return a value every time.
+        - identifier: return.unusedType

@@ -1,0 +1,56 @@
+# Release one plugin from a tag named <slug>-v<version> (meilisearch-v1.2.0) on main:
+# the checks run against Kestello's main branch, then Kestello's package workflow builds,
+# signs and publishes the zip with the notes from <slug>/CHANGELOG.md.
+#
+# Needs the repository secret KESTELLO_PACKAGE_KEY: the key file `bin/cms package:keygen`
+# wrote, pasted whole (gh secret set KESTELLO_PACKAGE_KEY < kestello-plugins.key).
+name: Release
+
+on:
+  push:
+    tags: ['*-v[0-9]*']
+
+permissions:
+  contents: read
+
+jobs:
+  tag:
+    name: Read the tag
+    runs-on: ubuntu-latest
+    outputs:
+      package: ${{ steps.tag.outputs.package }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - id: tag
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          package="${TAG%-v*}"
+          if [ ! -f "$package/plugin.json" ] && [ ! -f "$package/theme.json" ]; then
+            echo "::error::Tag $TAG names $package, which is not a plugin or theme folder here."; exit 1
+          fi
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error::Tag $TAG is not on main. Release from main (see README.md)."; exit 1
+          fi
+          echo "package=$package" >> "$GITHUB_OUTPUT"
+
+  check:
+    needs: tag
+    uses: ./.github/workflows/ci.yml
+    with:
+      kestello-ref: main
+
+  release:
+    needs: [tag, check]
+    permissions:
+      contents: write
+    uses: kestellohq/cms/.github/workflows/package.yml@main
+    with:
+      package: ${{ needs.tag.outputs.package }}
+      kestello-ref: main
+      release: true
+    secrets:
+      package-key: ${{ secrets.KESTELLO_PACKAGE_KEY }}

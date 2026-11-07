@@ -1,0 +1,10 @@
+{
+  "slug": "meilisearch",
+  "name": "Meilisearch",
+  "version": "1.0.0",
+  "description": "Site search on a Meilisearch server: typo tolerance, instant results and better ranking for large sites. Choose it under System, Platform, Search; the index is rebuilt in the background.",
+  "requires": { "core": "^0.1", "php": ">=8.4" },
+  "namespace": "Plugins\\Meilisearch\\",
+  "provider": "Plugins\\Meilisearch\\MeilisearchProvider",
+  "permissions": {}
+}
