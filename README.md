@@ -12,7 +12,7 @@ Install one from its release: download the zip under [Releases](https://github.c
 
 ## Develop
 
-You need PHP 8.4 or newer and Git. Nothing is installed with Composer.
+You need PHP 8.4 or newer, Git and Composer. Composer only installs the development tools Kestello pins (PHP CS Fixer, PHPStan); plugins have no Composer dependencies.
 
 ```sh
 sh tools/setup.sh                 # Kestello in kestello/ (a link to ../cms, or a clone) and the PHP tools

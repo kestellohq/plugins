@@ -5,7 +5,7 @@ First-party plugins for Kestello, each in its own folder with `plugin.json`, `sr
 ## Before you start
 
 1. Run `sh tools/setup.sh`. It puts Kestello in `kestello/` (ignored by Git); read its `AGENTS.md` and load the skills in `kestello/.agents/skills/`, above all `write-plugin`, `rest-endpoint`, `testing` and `security-review`.
-2. Kestello's hard rules apply here: no Composer and no PHP dependencies, security first, only the public API, every fix starts with a failing test, text people see goes through `__()`.
+2. Kestello's hard rules apply here: no PHP dependencies (Composer only for Kestello's pinned dev tools), security first, only the public API, every fix starts with a failing test, text people see goes through `__()`.
 
 ## Working rules
 
