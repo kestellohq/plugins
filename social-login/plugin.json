@@ -3,6 +3,7 @@
   "name": "Social Login",
   "version": "1.0.0",
   "description": "Sign in with Google (OpenID Connect) or GitHub (OAuth 2). Reference plugin for external authenticators: no core changes needed.",
+  "license": "GPL-2.0-or-later",
   "requires": {
     "core": "^0.1",
     "php": ">=8.4"

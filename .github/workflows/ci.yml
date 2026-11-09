@@ -34,7 +34,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl, sodium, zip, gd, fileinfo, pdo_sqlite
           coverage: none
-          tools: none
+          tools: composer
 
       - name: Get Kestello and the pinned PHP tools
         env:

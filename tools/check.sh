@@ -36,13 +36,13 @@ find $packages -name '*.php' -not -path '*/node_modules/*' -print0 | xargs -0 -n
 
 echo "== Code style (PER-CS 2.0)"
 if [ "$fix" = yes ]; then
-    $php kestello/tools/bin/php-cs-fixer.phar fix --using-cache=no --show-progress=none
+    $php kestello/vendor/bin/php-cs-fixer fix --using-cache=no --show-progress=none
 else
-    $php kestello/tools/bin/php-cs-fixer.phar fix --dry-run --diff --using-cache=no --show-progress=none
+    $php kestello/vendor/bin/php-cs-fixer fix --dry-run --diff --using-cache=no --show-progress=none
 fi
 
 echo "== PHPStan"
-$php -d memory_limit=2G kestello/tools/bin/phpstan.phar analyse -c phpstan.dist.neon --no-progress
+$php -d memory_limit=2G kestello/vendor/bin/phpstan analyse -c phpstan.dist.neon --no-progress
 
 for package in $packages; do
     flag=""
