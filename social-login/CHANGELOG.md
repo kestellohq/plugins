@@ -4,6 +4,8 @@ Changes to the Social Login plugin people would notice, newest first. The format
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-10
+
 ### Added
 
-- The first version, moved from the Kestello repository.
+- The first version, moved from the Kestello repository. Installs from the Kestello registry, and from its release zip.
