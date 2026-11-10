@@ -4,8 +4,8 @@ First-party plugins for [Kestello](https://github.com/kestellohq/cms), each rele
 
 | Plugin | What it does |
 | --- | --- |
-| [`meilisearch`](meilisearch) | Site search on a Meilisearch server. Choose it in **System > Platform > Search**. |
-| [`typesense`](typesense) | Site search on a Typesense server. Choose it in **System > Platform > Search**. |
+| [`meilisearch`](meilisearch) | Site search on a Meilisearch server. Choose it under **System > Infrastructure**, on the Search row. |
+| [`typesense`](typesense) | Site search on a Typesense server. Choose it under **System > Infrastructure**, on the Search row. |
 | [`social-login`](social-login) | Sign in with Google (OpenID Connect) or GitHub (OAuth 2). |
 
 Install one from its release: download the zip under [Releases](https://github.com/kestellohq/plugins/releases) and upload it in **Plugins > Add a plugin**. The guides are in the [Kestello documentation](https://docs.kestello.com).

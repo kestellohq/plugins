@@ -5,7 +5,7 @@ Site search on a [Meilisearch](https://www.meilisearch.com) server, self-hosted 
 ## Set it up
 
 1. Activate the plugin under **Plugins**.
-2. Open **System → Platform → Search** and choose **Meilisearch**.
+2. Open **System → Infrastructure**, select **Change** on the Search row and choose **Meilisearch**.
 3. Fill in:
    - **Server address**: for example `http://meilisearch:7700` on your own server, or `https://ms-1234.meilisearch.io` on Meilisearch Cloud.
    - **API key**: a key with search and documents access. Leave it empty for a server without a master key.
